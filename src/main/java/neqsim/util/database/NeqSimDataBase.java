@@ -58,8 +58,10 @@ public class NeqSimDataBase implements neqsim.util.util.FileSystemSettings, java
     private static String username = "remote";
     private static String password = "remote";
 
-    static String dataBaseType = "MSAccessUCanAccess";
-    public static String connectionString = "jdbc:ucanaccess://C:/Users/esol/OneDrive - Equinor/programming/neqsimdatabase/MSAccess/NeqSimDataBase.mdb;memory=true";
+
+static String dataBaseType = "MSAccessUCanAccess";
+public static String connectionString = "jdbc:ucanaccess://C:/Users/Akis/Desktop/NeqSimDataBase.mdb;memory=true";
+
 
     private Statement statement = null;
     protected Connection databaseConnection = null;

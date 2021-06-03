@@ -160,7 +160,7 @@ abstract class ComponentEos extends Component
                 setAtractiveParameter(new AtractiveTermSrk(this));
             }
         } else if (i == 19) {
-            setAtractiveParameter(new AtractiveTermMatCopPRUMRNew(this));
+            setAtractiveParameter(new AtractiveTermMatCopPRUMRNew(this,getMatiascopemanParamsPR()));
         } else {
             logger.error("error selecting an alpha formultaion term");
             logger.info("ok setting alpha function");

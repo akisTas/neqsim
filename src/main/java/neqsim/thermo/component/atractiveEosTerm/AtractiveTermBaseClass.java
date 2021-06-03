@@ -36,8 +36,8 @@ public class AtractiveTermBaseClass implements AtractiveTermInterface {
 
     private ComponentEosInterface component = null;
     protected double m;
-    protected double parameters[] = new double[3];
-    protected double parametersSolid[] = new double[3];
+    protected double parameters[] = new double[5];
+    protected double parametersSolid[] = new double[5];
 
     static Logger logger = LogManager.getLogger(AtractiveTermBaseClass.class);
 

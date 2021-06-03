@@ -70,7 +70,7 @@ abstract class Component extends Object
     protected double[] henryCoefParameter = new double[4];
     protected double[] dielectricParameter = new double[5];
     protected double[] schwartzentruberParams = new double[3], matiascopemanParams = new double[3],
-            matiascopemanParamsPR = new double[3], TwuCoonParams = new double[3],
+            matiascopemanParamsPR = new double[5], TwuCoonParams = new double[3],
             matiascopemanSolidParams = new double[3];
     protected double lennardJonesMolecularDiameter = 0, lennardJonesEnergyParameter = 0, stokesCationicDiameter = 0,
             paulingAnionicDiameter = 0;
@@ -291,6 +291,8 @@ abstract class Component extends Object
                 matiascopemanParamsPR[0] = Double.parseDouble(dataSet.getString("MCPR1"));
                 matiascopemanParamsPR[1] = Double.parseDouble(dataSet.getString("MCPR2"));
                 matiascopemanParamsPR[2] = Double.parseDouble(dataSet.getString("MCPR3"));
+                matiascopemanParamsPR[3] = Double.parseDouble(dataSet.getString("MCPR4"));
+                matiascopemanParamsPR[4] = Double.parseDouble(dataSet.getString("MCPR5"));
 
                 matiascopemanSolidParams[0] = Double.parseDouble(dataSet.getString("MC1Solid"));
                 matiascopemanSolidParams[1] = Double.parseDouble(dataSet.getString("MC2Solid"));

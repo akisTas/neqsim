@@ -29,9 +29,21 @@ class SystemUMRPRUMCEosNewTest {
 		testSystem.initProperties();
 	}
 
-	@Test
-	@DisplayName("test a TPflash2")
-    public void testTPflash2() {
+	@DisplayName("test a calculation")
+    public void testcalc() {	 
+		testSystem = new SystemUMRPRUMCEosNew(298.0, 10.0);
+		testSystem.addComponent("nitrogen", 0.01);
+		testSystem.addComponent("CO2", 0.01);
+		testSystem.addComponent("methane", 0.68);
+		testSystem.addComponent("ethane", 0.1);
+		testSystem.addComponent("n-heptane", 0.2);
+		testSystem.createDatabase(true);
+		testSystem.setMixingRule("HV", "UNIFAC_UMRPRU");
+		testModel = new neqsim.thermo.ThermodynamicModelTest(testSystem);
+		ThermodynamicOperations testOps = new ThermodynamicOperations(testSystem);
+        testOps.TPflash();
+		testSystem.initProperties();
+
         assertEquals(testSystem.getNumberOfPhases(), 2);
 	}
 
@@ -71,7 +83,7 @@ class SystemUMRPRUMCEosNewTest {
 		assertTrue(testModel.checkFugasityCoeffisientsDn2());
 	}
 	
-	@Disabled
+	//@Disabled
 	@Test
 	@DisplayName("calculate compressibility of gas phase")
     public void checkCompressibility(){

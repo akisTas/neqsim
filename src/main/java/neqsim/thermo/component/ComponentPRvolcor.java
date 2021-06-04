@@ -1,0 +1,45 @@
+/*
+* System_SRK_EOS.java
+*
+* Created on 8. april 2000, 23:14
+*/
+package neqsim.thermo.component;
+
+import neqsim.thermo.component.atractiveEosTerm.AtractiveTermPr;
+
+/**
+ *
+ * @author Even Solbraa
+ * @version
+ */
+public class ComponentPRvolcor extends ComponentPr {
+
+    private static final long serialVersionUID = 1000;
+
+    /**
+     * Creates new System_SRK_EOS
+     */
+    public ComponentPRvolcor() {
+    }
+
+    public ComponentPRvolcor(double moles) {
+        numberOfMoles = moles;
+    }
+
+    public ComponentPRvolcor(String component_name, double moles, double molesInPhase, int compnumber) {
+        super(component_name, moles, molesInPhase, compnumber);
+    }
+
+    public ComponentPRvolcor(int number, double TC, double PC, double M, double a, double moles) {
+        super(number, TC, PC, M, a, moles);
+    }
+    @Override
+	public double dFdN(PhaseInterface phase, int numberOfComponents, double temperature, double pressure) {
+        return super.dFdN(phase,numberOfComponents,temperature,pressure);
+    }
+
+    @Override
+	public double dFdNdT(PhaseInterface phase, int numberOfComponents, double temperature, double pressure) {
+        return super.dFdNdT(phase,numberOfComponents,temperature,pressure);
+    }
+}

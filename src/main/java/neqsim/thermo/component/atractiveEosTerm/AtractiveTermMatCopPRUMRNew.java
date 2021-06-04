@@ -1,5 +1,5 @@
 /*
- * AtractiveTermSrk.java
+ * AtractiveTermTTPL.java
  *
  * Created on 13. mai 2001, 21:59
  */
@@ -19,8 +19,10 @@ public class AtractiveTermMatCopPRUMRNew extends AtractiveTermMatCopPRUMR {
     boolean useStandardAlphaForSupercritical = false;
 
     /**
-     * Creates new AtractiveTermSrk
+     * Creates new AtractiveTerm for the new TTPL model
      */
+
+     
     public AtractiveTermMatCopPRUMRNew(ComponentEosInterface component) {
         super(component);
         m = (0.384401 + 1.52276 * component.getAcentricFactor()

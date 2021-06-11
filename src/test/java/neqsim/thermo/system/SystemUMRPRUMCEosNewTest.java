@@ -17,16 +17,23 @@ class SystemUMRPRUMCEosNewTest {
 	public static void setUp(){
 		testSystem = new SystemUMRPRUMCEosNew(298.0, 10.0);
 		testSystem.addComponent("nitrogen", 0.01);
-		testSystem.addComponent("CO2", 0.01);
-		testSystem.addComponent("methane", 0.68);
-		testSystem.addComponent("ethane", 0.1);
-		testSystem.addComponent("n-heptane", 0.2);
+		//testSystem.addComponent("CO2", 0.01);
+		//testSystem.addComponent("methane", 0.68);
+		//testSystem.addComponent("ethane", 0.1);
+		//testSystem.addComponent("n-heptane", 0.2);
 		testSystem.createDatabase(true);
 		testSystem.setMixingRule("HV", "UNIFAC_UMRPRU");
-		testModel = new neqsim.thermo.ThermodynamicModelTest(testSystem);
-		ThermodynamicOperations testOps = new ThermodynamicOperations(testSystem);
-        testOps.TPflash();
-		testSystem.initProperties();
+		testSystem.init(0);
+		testSystem.setNumberOfPhases(1);
+		testSystem.init(1);
+		testSystem.getPhase(0).getDensity();
+		
+		
+		//testModel = new neqsim.thermo.ThermodynamicModelTest(testSystem);
+		//ThermodynamicOperations testOps = new ThermodynamicOperations(testSystem);
+        //testOps.TPflash();
+		
+		//testSystem.initProperties();
 	}
 
 	@DisplayName("test a calculation")

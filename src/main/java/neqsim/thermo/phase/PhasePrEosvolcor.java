@@ -45,9 +45,12 @@ public class PhasePrEosvolcor extends PhasePrEos {
 
     }
 
+    public double getc() {return 0;}
+    public double loc_C() {return 0;}
     @Override
-	public double gV() {
+    public double gV() 
         return (getb()-getc()) / (molarVolume * (numberOfMolesInPhase * molarVolume + loc_C - loc_B));
+        //molarvolume is m^3/mol/10^5
         //old is-->return getb() / (molarVolume * (numberOfMolesInPhase * molarVolume - loc_B));
         //aks Dr. Soolbra whats the difference between getb and loc_B and
         // why the molar volume in the bracket is multiplied by the numberofmolesinphase (is it because of the units of molarvolume?)

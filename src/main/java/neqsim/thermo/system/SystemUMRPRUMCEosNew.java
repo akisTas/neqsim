@@ -37,8 +37,8 @@ public class SystemUMRPRUMCEosNew extends SystemUMRPRUMCEos {
         attractiveTermNumber = 19;
         for (int i = 0; i < numberOfPhases; i++) {
             phaseArray[i] = new PhasePrEosvolcor();
-            phaseArray[i].setTemperature(298.15);
-            phaseArray[i].setPressure(1.0);
+            phaseArray[i].setTemperature(T);
+            phaseArray[i].setPressure(P);
         }
     }
 

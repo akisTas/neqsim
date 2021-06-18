@@ -16,7 +16,8 @@ class SystemUMRPRUMCEosNewTest {
 	@BeforeAll
 	public static void setUp(){
 		testSystem = new SystemUMRPRUMCEosNew(298.0, 10.0);
-		testSystem.addComponent("nitrogen", 0.01);
+		//testSystem = new SystemPrEos(298.0, 10.0);
+		testSystem.addComponent("nitrogen", 1);
 		//testSystem.addComponent("CO2", 0.01);
 		//testSystem.addComponent("methane", 0.68);
 		//testSystem.addComponent("ethane", 0.1);
@@ -27,6 +28,9 @@ class SystemUMRPRUMCEosNewTest {
 		testSystem.setNumberOfPhases(1);
 		testSystem.init(1);
 		testSystem.getPhase(0).getDensity();
+		System.out.println("density=kg/m3 " + testSystem.getPhase(0).getDensity() + "kg/m3" );
+		System.out.println("pressure " + testSystem.getPressure() + "bar" );
+		System.out.println("molar volume " + testSystem.getMolarVolume() + "m3.mol*1e5" );
 		
 		
 		//testModel = new neqsim.thermo.ThermodynamicModelTest(testSystem);

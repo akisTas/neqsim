@@ -28,13 +28,17 @@ public class PhasePrEosvolcor extends PhasePrEos {
     }
 
     
+
+
+
     public double calcg() {
         return Math.log(1.0 - (getb()-getc()) / molarVolume);
     }
 
     public double calcf() {
-        return (1.0 / (R * loc_B * (delta1 - delta2))
+        return (1.0 / (R * getB() * (delta1 - delta2))
                 * Math.log((1.0 + (delta1 * getb() + getc()) / molarVolume) / (1.0 + (delta2 * getb()+getc()) / (molarVolume))));
+    }
     
     
     
@@ -45,11 +49,12 @@ public class PhasePrEosvolcor extends PhasePrEos {
 
     }
 
-    public double getc() {return 0;}
-    public double loc_C() {return 0;}
+    public double getc() {return 0.7;}
+    public double loc_C() {return 0.7;}
+    public double getC() {return 0.7;}
     @Override
-    public double gV() 
-        return (getb()-getc()) / (molarVolume * (numberOfMolesInPhase * molarVolume + loc_C - loc_B));
+    public double gV() {
+        return (getb()-getc()) / (molarVolume * (numberOfMolesInPhase * molarVolume + loc_C() - getB()));
         //molarvolume is m^3/mol/10^5
         //old is-->return getb() / (molarVolume * (numberOfMolesInPhase * molarVolume - loc_B));
         //aks Dr. Soolbra whats the difference between getb and loc_B and
@@ -59,7 +64,7 @@ public class PhasePrEosvolcor extends PhasePrEos {
     @Override
 	public double gVV() {
         double val1 = numberOfMolesInPhase * getMolarVolume();
-        double val2 = val1 + getC - getB();
+        double val2 = val1 + getC() - getB();
         return -1.0 / (val2 * val2) + 1.0 / (val1 * val1);
 
         //old is -->double val1 = numberOfMolesInPhase * getMolarVolume();
@@ -69,7 +74,7 @@ public class PhasePrEosvolcor extends PhasePrEos {
 
     public double gVVV() {
         double val1 = numberOfMolesInPhase * getMolarVolume();
-        double val2 = val1 + getC  - getB();
+        double val2 = val1 + getC()  - getB();
         return 2.0 / (val2 * val2 * val2) - 2.0 / (val1 * val1 * val1);
     }
 
@@ -78,8 +83,8 @@ public class PhasePrEosvolcor extends PhasePrEos {
 
     @Override
 	public double fv() {
-       return -1.0 / (R * (numberOfMolesInPhase * molarVolume + delta1 * loc_B + loc_C)
-        * (numberOfMolesInPhase * molarVolume + delta2 * loc_B + loc_C));     
+       return -1.0 / (R * (numberOfMolesInPhase * molarVolume + delta1 * getB() + loc_C())
+        * (numberOfMolesInPhase * molarVolume + delta2 * getB() + loc_C()));     
        
        //OLD IS--> return -1.0 / (R * (numberOfMolesInPhase * molarVolume + delta1 * loc_B)
                // * (numberOfMolesInPhase * molarVolume + delta2 * loc_B));
@@ -88,9 +93,9 @@ public class PhasePrEosvolcor extends PhasePrEos {
 
     @Override
 	public double fVV() {
-        double val1 = (numberOfMolesInPhase * molarVolume + delta1 * loc_B + loc_C);
-        double val2 = (numberOfMolesInPhase * molarVolume + delta2 * loc_B + loc_C);
-        return 1.0 / (R * loc_B * (delta1 - delta2)) * (-1.0 / (val1 * val1) + 1.0 / (val2 * val2));      
+        double val1 = (numberOfMolesInPhase * molarVolume + delta1 * getB() + loc_C());
+        double val2 = (numberOfMolesInPhase * molarVolume + delta2 * getB() + loc_C());
+        return 1.0 / (R * getB() * (delta1 - delta2)) * (-1.0 / (val1 * val1) + 1.0 / (val2 * val2));      
         
         //old is-->double val1 = (numberOfMolesInPhase * molarVolume + delta1 * loc_B);
         //double val2 = (numberOfMolesInPhase * molarVolume + delta2 * loc_B);
